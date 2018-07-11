@@ -1,0 +1,7 @@
+/.idea/*
+/project/*
+/.settings/*
+/target/*
+.cache-main
+.cache-tests
+*.iml
