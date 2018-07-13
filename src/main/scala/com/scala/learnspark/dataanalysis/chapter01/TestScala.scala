@@ -1,6 +1,6 @@
 package com.scala.learnspark.dataanalysis.chapter01
 
-object Test {
+object TestScala {
 
   def main(args: Array[String]): Unit = {
     println(1)
