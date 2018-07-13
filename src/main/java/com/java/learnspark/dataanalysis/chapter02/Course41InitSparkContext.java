@@ -1,4 +1,4 @@
-package com.java6.learnspark.dataanalysis.chapter02;
+package com.java.learnspark.dataanalysis.chapter02;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
