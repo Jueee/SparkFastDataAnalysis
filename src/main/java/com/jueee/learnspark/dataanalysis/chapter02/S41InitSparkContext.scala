@@ -1,9 +1,8 @@
-package com.scala.learnspark.dataanalysis.chapter02
+package com.jueee.learnspark.dataanalysis.chapter02
 
-import org.apache.spark.SparkConf
-import org.apache.spark.SparkContext
+import org.apache.spark.{SparkConf, SparkContext}
 
-object Course41InitSparkContext {
+object S41InitSparkContext {
 
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setMaster("local").setAppName("My App")
