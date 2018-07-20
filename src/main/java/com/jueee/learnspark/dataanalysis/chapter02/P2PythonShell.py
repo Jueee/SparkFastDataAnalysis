@@ -1,4 +1,6 @@
 #coding=utf-8
+import findspark;
+findspark.init();
 
 from pyspark import SparkContext
 
@@ -7,3 +9,5 @@ sc = SparkContext('local')
 print('sc:',sc)
 lines = sc.textFile('README.md')
 print('lines:',lines)
+print(lines.count())
+print(lines.first())

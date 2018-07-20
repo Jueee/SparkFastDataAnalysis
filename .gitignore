@@ -1,6 +1,7 @@
 /.idea/*
 /project/*
 /.settings/*
+/venv/*
 /target/*
 .cache-main
 .cache-tests

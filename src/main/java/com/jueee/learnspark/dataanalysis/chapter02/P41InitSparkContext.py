@@ -1,5 +1,8 @@
 #coding=utf-8
 
+import findspark;
+findspark.init();
+
 print('初始化SparkContext')
 
 from pyspark import SparkConf,SparkContext
