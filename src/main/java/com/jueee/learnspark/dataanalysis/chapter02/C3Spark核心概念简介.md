@@ -33,4 +33,5 @@ res3: String = # SPARK-4161: scala does not assume use of the java classpath,
 </pre>
 #### 向 Spark 传递函数 ####
 [Java 版本](J3CoreConcepts.java)  
-[Scala 版本](S3CoreConcepts.scala)
+[Scala 版本](S3CoreConcepts.scala)  
+[Python 版本](P3CoreConcepts.py)
