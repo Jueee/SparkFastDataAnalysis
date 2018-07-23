@@ -6,3 +6,4 @@
 .cache-main
 .cache-tests
 *.iml
+*.crc
