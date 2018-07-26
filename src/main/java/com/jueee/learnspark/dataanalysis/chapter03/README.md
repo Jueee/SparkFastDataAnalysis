@@ -6,14 +6,14 @@ RDD 其实就是分布式的元素集合。
 #### 本章目录 ####
 1.	[RDD 基础](C1RDD基础.md)    
 2.	[创建 RDD](C2创建RDD.md)    
-3.	[RDD 操作]()    
-3.1	[转化操作]()    
-3.2	[行动操作]()    
-3.3	[惰性求值]()    
-4.	[向 Spark 传递函数]()    
-4.1	[Python]()    
-4.2	[Scala]()    
-4.3	[Java]()    
+3.	[RDD 操作](C3RDD操作.md)    
+3.1	转化操作    
+3.2	行动操作    
+3.3	惰性求值    
+4.	[向 Spark 传递函数](C4向Spark传递函数.md)    
+4.1	[Python](P4PassFunctions.py)    
+4.2	[Scala](S4PassFunctions.scala)    
+4.3	[Java](J4PassFunctions.java)    
 5.	[常见的转化操作和行动操作]()    
 5.1	[基本 RDD]()    
 5.2	[在不同 RDD 类型间转换]()    

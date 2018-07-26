@@ -1,3 +1,7 @@
+
+import findspark;
+findspark.init();
+
 from pyspark import SparkContext
 
 # Python 行数统计
