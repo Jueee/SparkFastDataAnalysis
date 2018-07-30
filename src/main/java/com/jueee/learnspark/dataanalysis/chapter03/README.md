@@ -14,7 +14,7 @@ RDD 其实就是分布式的元素集合。
 4.1	[Python](P4PassFunctions.py)    
 4.2	[Scala](S4PassFunctions.scala)    
 4.3	[Java](J4PassFunctions.java)    
-5.	[常见的转化操作和行动操作]()    
+5.	常见的转化操作和行动操作    
 5.1	[基本 RDD]()    
 5.2	[在不同 RDD 类型间转换]()    
 6.	[持久化 ( 缓存 )]()    
