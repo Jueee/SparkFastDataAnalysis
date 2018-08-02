@@ -5,7 +5,9 @@ Pair RDD 可以使用所有标准 RDD 上的可用的转化操作。
 -   [连接](C33连接.md)    
 -   [数据排序](C34数据排序.md)  
 
-### 常见Pair RDD转化操作 ###
+#### 常见Pair RDD转化操作 ####
 -   [Scala](S30Transformations.scala)
 -   [Java](J30Transformations.java)
 -   [Python](P30Transformations.py)
+#### 只访问 pair RDD 的值部分 ####
+Spark 提供了 mapValues(func) 函数，功能类似于 map{case (x, y): (x,func(y))} 。

@@ -20,8 +20,7 @@ public class J30Transformations {
     }
 
     public static void transByOne(JavaSparkContext sc){
-        JavaRDD<Tuple2<Integer,Integer>> lines = sc.parallelize(Arrays.asList(new Tuple2(1,2),new Tuple2(3,4),new Tuple2(3,6)));
-        JavaPairRDD<Integer,Integer> pairs = lines.mapToPair(x -> new Tuple2(x._1(),x._2()));
+        JavaPairRDD<Integer,Integer> pairs = sc.parallelizePairs(Arrays.asList(new Tuple2(1,2),new Tuple2(3,4),new Tuple2(3,6)));
         // 合并具有相同键的值
         // {(1,2), (3,10)}
         pairs.reduceByKey((x,y) -> x+y).collect().forEach(System.out::print);
