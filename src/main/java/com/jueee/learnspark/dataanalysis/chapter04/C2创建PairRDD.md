@@ -17,4 +17,17 @@
 例如，要使用 mapToPair() 函数来代替基础版的 map() 函数。
 #### 内存创建 ####
 -   使用 Scala 和 Python 从一个内存中的数据集创建 pair RDD 时，只需要对这个由二元组组成的集合调用 SparkContext.parallelize() 方法。
--   使用 Java 从内存数据集创建 pair RDD的话，则需要使用 SparkContext.parallelizePairs() 。
+-   使用 Java 从内存数据集创建 pair RDD的话，则需要使用 SparkContext.parallelizePairs() 。  
+
+Java
+``` 
+JavaPairRDD<Integer,Integer> rdd = sc.parallelizePairs(Arrays.asList(new Tuple2(1,2),new Tuple2(3,4),new Tuple2(3,6)));
+```
+Python
+``` 
+pairs = sc.parallelize( {(1, 2), (3, 4), (3, 6)})
+```
+Scala
+``` 
+val pairs = sc.parallelize(List(Tuple2(1,2),Tuple2(3,4),Tuple2(3,6)))
+```

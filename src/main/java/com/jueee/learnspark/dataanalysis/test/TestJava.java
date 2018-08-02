@@ -4,6 +4,8 @@ import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
+import java.util.stream.IntStream;
+
 public class TestJava {
     public static void main(String[] args) {
         SparkConf conf = new SparkConf().setMaster("local").setAppName("test");
@@ -16,5 +18,8 @@ public class TestJava {
             System.out.println(line);
         }
         javaRDD.collect().forEach(System.out::println);
+
+
+        IntStream.range(1,8).forEach(System.out::print);
     }
 }

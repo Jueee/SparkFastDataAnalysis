@@ -18,8 +18,7 @@ object S30Transformations {
     * @param sc
     */
   def transByOne(sc:SparkContext)={
-    val lines = sc.parallelize(List(Tuple2(1,2),Tuple2(3,4),Tuple2(3,6)))
-    val pairs = lines.map(x => (x._1,x._2))
+    val pairs = sc.parallelize(List(Tuple2(1,2),Tuple2(3,4),Tuple2(3,6)))
 
     // 合并具有相同键的值
     // {(1,2), (3,10)}
@@ -60,10 +59,8 @@ object S30Transformations {
     */
   def transByTwo(sc: SparkContext)={
     println()
-    val value1 = sc.parallelize(List(Tuple2(1,2),Tuple2(3,4),Tuple2(3,6)))
-    val rdd = value1.map(x => (x._1,x._2))
-    val value2 = sc.parallelize(List(Tuple2(3, 9)))
-    val other = value2.map(x => (x._1,x._2))
+    val rdd = sc.parallelize(List(Tuple2(1,2),Tuple2(3,4),Tuple2(3,6)))
+    val other = sc.parallelize(List(Tuple2(3, 9)))
 
     // 删掉 RDD 中键与 other RDD 中的键相同的元素
     // {(1,2)}
