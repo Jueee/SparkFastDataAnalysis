@@ -6,7 +6,7 @@ public class StringsUtilByJava {
     }
 
     public static void printFinish(){
-        System.out.println("[finish]" + new Exception().getStackTrace()[1].getMethodName());
+        System.out.println("----------  " + new Exception().getStackTrace()[1].getMethodName() + "  ----------");
     }
 
     public static void main(String[] args) {
