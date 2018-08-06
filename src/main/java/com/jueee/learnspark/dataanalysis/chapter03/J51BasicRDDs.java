@@ -1,12 +1,12 @@
 package com.jueee.learnspark.dataanalysis.chapter03;
 
+import com.jueee.learnspark.dataanalysis.common.AvgCount;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function2;
 import scala.Tuple2;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
 public class J51BasicRDDs {
@@ -63,14 +63,3 @@ public class J51BasicRDDs {
     }
 }
 
-class AvgCount implements Serializable{
-    public int total;
-    public int num;
-    public AvgCount(int total,int num){
-        this.total = total;
-        this.num = num;
-    }
-    public double avg(){
-        return total/(double)num;
-    }
-}

@@ -27,13 +27,16 @@ def wordcountByCountByValue(sc):
 
 # 使用 combineByKey() 求每个键对应的平均值
 def combineByKey(sc):
-    pairs = sc.parallelize({('panda', 0), ('pink', 3), ('pirate', 3), ('panda', 1), ('pink', 4)})
+    print("---combineByKey---")
+    pairs = sc.parallelize([('panda', 0), ('pink', 3), ('pirate', 3), ('panda', 1), ('pink', 4)])
     sumCount = pairs.combineByKey(
         (lambda x:(x,1)),
         (lambda x,y:(x[0] + y, x[1] + 1)),
-        (lambda x,y:(x[0]+y[0],x[1]+y[1]))
+        (lambda x,y:(x[0] + y[0], x[1] + y[1]))
     )
-    result = sumCount.map(lambda key, xy: (key, xy[0]/xy[1])).collectAsMap()
+    for v in sumCount.collect():
+        print(v)
+    result = sumCount.map(lambda x: (x[0],x[1][0]/x[1][1])).collectAsMap()
     for v in result:
         print(v)
 
