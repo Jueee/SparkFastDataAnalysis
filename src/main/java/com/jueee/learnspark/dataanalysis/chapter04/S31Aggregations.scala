@@ -11,6 +11,7 @@ object S31Aggregations {
     reduceByKey(sc)
     wordcount(sc)
     wordcountByCountByValue(sc)
+    combineByKey(sc)
   }
 
   /**
@@ -49,5 +50,20 @@ object S31Aggregations {
     val input = sc.textFile("README.md")
     val words = input.flatMap(x => x.split(" ")).countByValue()
     words.foreach(println)
+  }
+
+  /**
+    * 使用 combineByKey() 求每个键对应的平均值
+    * @param sc
+    */
+  def combineByKey(sc:SparkContext): Unit ={
+    StringsUtilByScala.printFinish()
+    val pairs = sc.parallelize(List(Tuple2("panda", 0),Tuple2("pink",3),Tuple2("pirate",3),Tuple2("panda",1),Tuple2("pink",4)))
+    val result = pairs.combineByKey(
+      (v) => (v,1),
+      (acc:(Int,Int), v) => (acc._1 + v,acc._2 + 1),
+      (acc1:(Int,Int), acc2:(Int,Int)) => (acc1._1 + acc2._1, acc1._2 + acc2._2)
+    )
+    result.collectAsMap().map(println)
   }
 }
