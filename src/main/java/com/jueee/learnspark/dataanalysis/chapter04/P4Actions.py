@@ -10,7 +10,7 @@ def countByKey(pairs):
 def collectAsMap(pairs):
     result = pairs.collectAsMap()
     for v in result:
-        print(v)
+        print(v,result[v])
 
 # 返回给定键对应的所有值
 def lookup(pairs):
