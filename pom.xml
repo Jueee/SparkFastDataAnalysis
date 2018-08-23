@@ -30,6 +30,12 @@
             <artifactId>spark-streaming_2.11</artifactId>
             <version>${spark.jar.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play-json_2.11</artifactId>
+            <version>2.6.10</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
