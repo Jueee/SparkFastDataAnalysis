@@ -11,3 +11,4 @@ import json
 data = lines.map(lambda x:json.loads(x))
 for line in data.collect():
     print(line)
+
