@@ -88,6 +88,17 @@ public class J23CSV {
         });
     }
 
+    public static void saveCSV(JavaSparkContext sc){
+        StringsUtilByJava.printFinish();
+        JavaRDD<String> input = sc.textFile(inputFile);
+//        input.mapPartitions(people -> {
+//            StringWriter stringWriter = new StringWriter();
+//            CSVWriter csvWriter = new CSVWriter(stringWriter);
+//            csvWriter.writeAll(people);
+//            return stringWriter.
+//        });
+    }
+
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
         JavaSparkContext sc = new JavaSparkContext(conf);
@@ -97,5 +108,6 @@ public class J23CSV {
         readCSVbyJava8(sc);
         readFullCSVbyJava7(sc);
         readFullCSVbyJava8(sc);
+        saveCSV(sc);
     }
 }

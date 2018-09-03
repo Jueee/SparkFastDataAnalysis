@@ -1,6 +1,7 @@
 package com.jueee.learnspark.dataanalysis.chapter05
 
 import java.io.{File, StringReader, StringWriter}
+import java.util
 
 import com.jueee.learnspark.dataanalysis.util.{FilesUtilByJava, StringsUtilByScala}
 import com.opencsv.{CSVReader, CSVWriter}
@@ -8,9 +9,11 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 object S23CSV {
 
-  val fileName = FilesUtilByJava.getDataPath() + File.separator + "chapter05" + File.separator + "FileFormats" + File.separator + "demo.csv"
+  val filePath = FilesUtilByJava.getDataPath() + File.separator + "chapter05" + File.separator + "FileFormats"
 
-  val saveName = FilesUtilByJava.getDataPath() + File.separator + "chapter05" + File.separator + "FileFormats" + File.separator + "save_by_scala.csv"
+  val fileName = filePath + File.separator + "demo.csv"
+
+  val saveName = filePath + File.separator + "save_by_scala.csv"
 
   def main(args: Array[String]): Unit = {
 
@@ -52,15 +55,18 @@ object S23CSV {
     println(lines)
   }
 
-//  def saveCSV(sc: SparkContext): Unit ={
-//    StringsUtilByScala.printFinish()
-//    val lines = sc.textFile(fileName)
-//    lines.map(person => List(person).toArray)
-//         .mapPartitions { person =>
-//           val stringWriter = new StringWriter()
-//           val csvWrite = new CSVWriter(stringWriter)
-//           csvWrite.writeAll(person.toList)
-//           Iterator(stringWriter.toString)
-//         }.saveAsTextFile(saveName)
-//  }
+  def saveCSV(sc: SparkContext): Unit ={
+    // 引入，scala与java之间的集合类型转换
+    import scala.collection.JavaConversions._
+
+    StringsUtilByScala.printFinish()
+    val lines = sc.textFile(fileName)
+    lines.map(person => List(person).toArray)
+         .mapPartitions { person =>
+           val stringWriter = new StringWriter()
+           val csvWrite = new CSVWriter(stringWriter)
+           csvWrite.writeAll(person.toList)
+           Iterator(stringWriter.toString)
+         }.saveAsTextFile(saveName)
+  }
 }

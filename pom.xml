@@ -10,6 +10,8 @@
     <properties>
         <java.version>1.8</java.version>
         <spark.jar.version>2.3.1</spark.jar.version>
+        <hadoop.version>2.6.5</hadoop.version>
+        <hbase.version>1.2.2</hbase.version>
     </properties>
 
     <dependencies>
@@ -39,6 +41,11 @@
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
             <version>4.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
         </dependency>
     </dependencies>
     <build>
