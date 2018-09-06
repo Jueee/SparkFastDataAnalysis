@@ -1,5 +1,5 @@
-package com.jueee.learnspark.dataanalysis.common;
-
+syntax = "proto2";
+option java_package = "com.jueee.learnspark.dataanalysis.protobuf";
 
 message Venue {
   required int32 id = 1;

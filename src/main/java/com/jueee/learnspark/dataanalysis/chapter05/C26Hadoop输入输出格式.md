@@ -24,13 +24,59 @@ Twitter 的 Elephant Bird 包支持很多种数据格式，包括 JSON、Lucene�
 #### 保存Hadoop输出格式 ####
 [Java示例](J26HadoopFormats.java)    
 #### Protocol buffer ####
+PB 是结构化数据，它要求字段和类型都要明确定义。它们是经过优化的，编解码速度快，而且占用空间也很小。
 -   [官网](https://developers.google.com/protocol-buffers/)
 -   [Git Code](https://github.com/protocolbuffers/protobuf)
 -   [Git Java Code](https://github.com/protocolbuffers/protobuf/tree/master/java)
+
+PB 由可选字段、必需字段、重复字段三种字段组成。  
+在解析时，可选字段的缺失不会导致解析失败，而必需字段的缺失则会导致数据解析失败。  
+因此，在往 PB 定义中添加新字段时，最好将新字段设为可选字段，毕竟不是所有人都会同时更新到新版本。  
+
 ``` 
 <dependency>
   <groupId>com.google.protobuf</groupId>
   <artifactId>protobuf-java</artifactId>
   <version>3.6.1</version>
 </dependency>
+```
+``` 
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-netty</artifactId>
+    <version>${grpc.version}</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-protobuf</artifactId>
+    <version>${grpc.version}</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-stub</artifactId>
+    <version>${grpc.version}</version>
+    <scope>provided</scope>
+</dependency>
+```
+``` 
+<plugin>
+    <groupId>org.xolstice.maven.plugins</groupId>
+    <artifactId>protobuf-maven-plugin</artifactId>
+    <version>0.5.1</version>
+    <configuration>
+        <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
+        <pluginId>grpc-java</pluginId>
+        <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}}:exe:${os.detected.classifier}</pluginArtifact>
+    </configuration>
+    <executions>
+        <execution>
+            <goals>
+                <goal>compile</goal>
+                <goal>compile-custom</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 ```

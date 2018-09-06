@@ -3,6 +3,7 @@ package com.jueee.learnspark.dataanalysis.chapter05
 import java.io.File
 
 import com.jueee.learnspark.dataanalysis.chapter05.S24SequenceFile.filePath
+import com.jueee.learnspark.dataanalysis.protobuf.Places
 import com.jueee.learnspark.dataanalysis.util.{FilesUtilByJava, StringsUtilByScala}
 import com.twitter.elephantbird.mapreduce.input.LzoJsonInputFormat
 import com.twitter.elephantbird.mapreduce.io.ProtobufWritable
@@ -21,6 +22,8 @@ object S26HadoopFormats {
 
   val jsonFileName = filePath + File.separator + "json.txt"
 
+  val protoFileName = filePath + File.separator + "save_by_scala.proto"
+
   def main(args: Array[String]): Unit = {
 
     val conf = new SparkConf().setMaster("local").setAppName("My App")
@@ -28,7 +31,7 @@ object S26HadoopFormats {
 
     byKeyValueTextInputFormat(sc)
     byElephantBird(sc)
-
+    saveByProtocolBuffer(sc)
   }
 
   /**
@@ -58,22 +61,24 @@ object S26HadoopFormats {
   }
 
 
-//  def test(): Unit ={
-//    val job = new Job()
-//    val conf = job.getConfiguration
-//    LzoProtobufBlockOutputFormat.setClassConf(classOf[Places.Venue], conf);
-//    val dnaLounge = Places.Venue.newBuilder()
-//    dnaLounge.setId(1);
-//    dnaLounge.setName("DNA Lounge")
-//    dnaLounge.setType(Places.Venue.VenueType.CLUB)
-//    val data = sc.parallelize(List(dnaLounge.build()))
-//    val outputData = data.map{ pb =>
-//      val protoWritable = ProtobufWritable.newInstance(classOf[Places.Venue]);
-//      protoWritable.set(pb)
-//      (null, protoWritable)
-//    }
-//    outputData.saveAsNewAPIHadoopFile(outputFile, classOf[Text],
-//      classOf[ProtobufWritable[Places.Venue]],
-//      classOf[LzoProtobufBlockOutputFormat[ProtobufWritable[Places.Venue]]], conf)
-//  }
+  def saveByProtocolBuffer(sc:SparkContext): Unit ={
+    StringsUtilByScala.printFinish()
+    val job = new Job()
+    val conf = job.getConfiguration
+    conf.setBoolean("hadoop.native.lib", true)
+    LzoProtobufBlockOutputFormat.setClassConf(classOf[Places.Venue], conf);
+    val dnaLounge = Places.Venue.newBuilder()
+    dnaLounge.setId(1);
+    dnaLounge.setName("DNA Lounge")
+    dnaLounge.setType(Places.Venue.VenueType.CLUB)
+    val data = sc.parallelize(List(dnaLounge.build()))
+    val outputData = data.map{ pb =>
+      val protoWritable = ProtobufWritable.newInstance(classOf[Places.Venue]);
+      protoWritable.set(pb)
+      (null, protoWritable)
+    }
+    outputData.saveAsNewAPIHadoopFile(protoFileName, classOf[Text],
+      classOf[ProtobufWritable[Places.Venue]],
+      classOf[LzoProtobufBlockOutputFormat[ProtobufWritable[Places.Venue]]], conf)
+  }
 }
