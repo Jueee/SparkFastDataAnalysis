@@ -2,6 +2,10 @@ package com.jueee.learnspark.dataanalysis.util;
 
 public class DataBaseUtil {
 
+    final public static String SPARK_MASTER = "local";
+
+    final public static String SPARK_APPNAME = "test";
+
     final public static String MYSQL_DRIVER = "com.mysql.jdbc.Driver";
 
     final public static String MYSQL_CONNECTION_ALL = "jdbc:mysql://localhost:3306/test?user=root&password=jue";
@@ -13,4 +17,10 @@ public class DataBaseUtil {
     final public static String MYSQL_CONNECTION_PASSWORD = "jue";
 
     final public static String MYSQL_TEST_SQL = "SELECT * FROM `stat` ";
+
+    final public static String CASSANDRA_HOSTNAME = "127.0.0.1";
+
+    final public static String CASSANDRA_USERNAME = "hzweiyongqiang";
+
+    final public static String CASSANDRA_PASSWORD = "postgres";
 }

@@ -10,6 +10,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spark.jar.version>2.3.1</spark.jar.version>
+        <spark.cassandra.version>2.3.1</spark.cassandra.version>
         <hadoop.version>2.6.5</hadoop.version>
         <hbase.version>1.2.2</hbase.version>
         <hive.version>1.0.1</hive.version>
@@ -85,10 +86,20 @@
             <version>${grpc.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <dependency> <!-- MySQL -->
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.26</version>
+        </dependency>
+        <dependency> <!-- Cassandra -->
+            <groupId>com.datastax.spark</groupId>
+            <artifactId>spark-cassandra-connector_2.11</artifactId>
+            <version>${spark.cassandra.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.datastax.spark</groupId>
+            <artifactId>spark-cassandra-connector-java_2.11</artifactId>
+            <version>1.6.0-M1</version>
         </dependency>
     </dependencies>
     <build>
