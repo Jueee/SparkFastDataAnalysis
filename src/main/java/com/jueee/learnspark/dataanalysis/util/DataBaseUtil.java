@@ -23,4 +23,8 @@ public class DataBaseUtil {
     final public static String CASSANDRA_USERNAME = "hzweiyongqiang";
 
     final public static String CASSANDRA_PASSWORD = "postgres";
+
+    final public static String ZOOKERPER_HOSTNAME = "zookerper.host1,zookerper.host2,zookerper.host3";
+
+    final public static String HBASE_PRODUCT = "/hbase_product";
 }

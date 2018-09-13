@@ -2,12 +2,8 @@ package com.jueee.learnspark.dataanalysis.chapter05
 
 import java.io.File
 
-import com.jueee.learnspark.dataanalysis.chapter05.S24SequenceFile.filePath
-import com.jueee.learnspark.dataanalysis.protobuf.Places
 import com.jueee.learnspark.dataanalysis.util.{FilesUtilByJava, StringsUtilByScala}
 import com.twitter.elephantbird.mapreduce.input.LzoJsonInputFormat
-import com.twitter.elephantbird.mapreduce.io.ProtobufWritable
-import com.twitter.elephantbird.mapreduce.output.LzoProtobufBlockOutputFormat
 import org.apache.hadoop.io.{LongWritable, MapWritable, Text}
 import org.apache.hadoop.mapred.KeyValueTextInputFormat
 import org.apache.hadoop.mapreduce.Job
@@ -62,6 +58,7 @@ object S26HadoopFormats {
 
 
   def saveByProtocolBuffer(sc:SparkContext): Unit ={
+    /*
     StringsUtilByScala.printFinish()
     val job = new Job()
     val conf = job.getConfiguration
@@ -80,5 +77,7 @@ object S26HadoopFormats {
     outputData.saveAsNewAPIHadoopFile(protoFileName, classOf[Text],
       classOf[ProtobufWritable[Places.Venue]],
       classOf[LzoProtobufBlockOutputFormat[ProtobufWritable[Places.Venue]]], conf)
+      */
   }
+
 }
