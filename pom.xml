@@ -97,6 +97,11 @@
             <artifactId>hbase-common</artifactId>
             <version>${hbase.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch-hadoop</artifactId>
+            <version>6.2.1</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

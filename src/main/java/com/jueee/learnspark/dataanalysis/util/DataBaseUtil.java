@@ -27,4 +27,10 @@ public class DataBaseUtil {
     final public static String ZOOKERPER_HOSTNAME = "zookerper.host1,zookerper.host2,zookerper.host3";
 
     final public static String HBASE_PRODUCT = "/hbase_product";
+
+    final public static String ES_NODES = "elasticsearch.host";
+
+    final public static String ES_RESOURCE_READ = "test_mailindex";
+
+    final public static String ES_RESOURCE_WRITE = "test/mail";
 }
