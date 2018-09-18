@@ -1,6 +1,7 @@
 package com.jueee.learnspark.dataanalysis.chapter04;
 
 import com.jueee.learnspark.dataanalysis.common.AvgCount;
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import com.jueee.learnspark.dataanalysis.util.StringsUtilByJava;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 public class J31Aggregations {
     public static void main(String[] args) {
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
         reduceByKeyJava7(sc);
         reduceByKeyJava8(sc);

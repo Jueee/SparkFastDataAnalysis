@@ -1,5 +1,6 @@
 package com.jueee.learnspark.dataanalysis.chapter04;
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import org.apache.spark.HashPartitioner;
 import org.apache.spark.Partitioner;
 import org.apache.spark.SparkConf;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 public class J5DataPartitioning {
 
     public static void main(String[] args) {
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
         getDataPartitioning(sc);
     }
@@ -25,7 +26,7 @@ public class J5DataPartitioning {
      */
     public static void getDataPartitioning(JavaSparkContext sc) {
         // 创建出了一个由 (Int, Int) 对组成的 RDD
-        JavaPairRDD<Integer, Integer> pairs = sc.parallelizePairs(Arrays.asList(Tuple2.apply(1, 1), Tuple2.apply(2, 2), Tuple2.apply(3, 3)));
+        JavaPairRDD<Integer, Integer> pairs = sc.parallelizePairs(Arrays.asList(new Tuple2(1, 1), new Tuple2(2, 2), new Tuple2(3, 3)));
         // 初始时没有分区方式信息（一个值为 None 的 Option 对象）
         System.out.println(pairs.partitioner());
 

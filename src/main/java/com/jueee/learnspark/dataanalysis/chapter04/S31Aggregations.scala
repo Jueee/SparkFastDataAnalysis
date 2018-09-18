@@ -1,12 +1,12 @@
 package com.jueee.learnspark.dataanalysis.chapter04
 
-import com.jueee.learnspark.dataanalysis.util.StringsUtilByScala
+import com.jueee.learnspark.dataanalysis.util.{DataBaseUtil, StringsUtilByScala}
 import org.apache.spark.{SparkConf, SparkContext}
 
 object S31Aggregations {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster("local").setAppName("wordcount")
+    val conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME)
     val sc = new SparkContext(conf)
     reduceByKey(sc)
     wordcount(sc)

@@ -1,12 +1,12 @@
 package com.jueee.learnspark.dataanalysis.chapter04
 
-import com.jueee.learnspark.dataanalysis.util.StringsUtilByScala
+import com.jueee.learnspark.dataanalysis.util.{DataBaseUtil, StringsUtilByScala}
 import org.apache.spark.{SparkConf, SparkContext}
 
 object S4Actions {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster("local").setAppName("test")
+    val conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME)
     val sc = new SparkContext(conf)
     countByKey(sc)
     collectAsMap(sc)

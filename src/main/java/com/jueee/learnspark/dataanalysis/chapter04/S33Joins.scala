@@ -1,11 +1,12 @@
 package com.jueee.learnspark.dataanalysis.chapter04
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil
 import org.apache.spark.{SparkConf, SparkContext}
 
 object S33Joins {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster("local").setAppName("test")
+    val conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME)
     val sc = new SparkContext(conf)
 
     val storeAddress = sc.parallelize(List(

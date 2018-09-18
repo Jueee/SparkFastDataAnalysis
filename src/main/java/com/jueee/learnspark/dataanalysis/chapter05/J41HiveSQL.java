@@ -1,5 +1,6 @@
 package com.jueee.learnspark.dataanalysis.chapter05;
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
@@ -10,7 +11,7 @@ public class J41HiveSQL {
 
 
     public static void main(String[] args){
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("test");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         HiveContext hiveContext = new HiveContext(sc);

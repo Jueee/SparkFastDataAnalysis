@@ -1,5 +1,6 @@
 package com.jueee.learnspark.dataanalysis.chapter02;
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import com.jueee.learnspark.dataanalysis.util.FilesUtilByJava;
 import com.jueee.learnspark.dataanalysis.util.StringsUtilByJava;
 import org.apache.spark.SparkConf;
@@ -21,7 +22,7 @@ public class J42WordCount {
 
     public static void wordCountByJava7(String inputFile,String outputPath){
         // 创建一个Java版本的Spark Context
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
         // 读取我们的输入数据
         JavaRDD<String> input = sc.textFile(inputFile);
@@ -57,7 +58,7 @@ public class J42WordCount {
     }
 
     public static void wordCountByJava8(String inputFile,String outputPath){
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> input = sc.textFile(inputFile);
         JavaRDD<String> words = input.flatMap(s -> Arrays.asList(s.split(SPLIT_REGEX_STR)).iterator());

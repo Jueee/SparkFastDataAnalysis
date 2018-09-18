@@ -94,7 +94,7 @@ public class J51MySQL {
     }
 
     public static void main(String[] args){
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("test");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
         DbConnection dbConnection = new DbConnection(DataBaseUtil.MYSQL_DRIVER, DataBaseUtil.MYSQL_CONNECTION_URL, DataBaseUtil.MYSQL_CONNECTION_NAME, DataBaseUtil.MYSQL_CONNECTION_PASSWORD);

@@ -1,5 +1,6 @@
 package com.jueee.learnspark.dataanalysis.chapter05;
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import com.jueee.learnspark.dataanalysis.util.FilesUtilByJava;
 import com.jueee.learnspark.dataanalysis.util.StringsUtilByJava;
 import org.apache.hadoop.io.IntWritable;
@@ -53,7 +54,7 @@ public class J24SequenceFile {
 
 
     public static void main(String[] args){
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
         readSequenceFileByJava7(sc);
         readSequenceFileByJava8(sc);

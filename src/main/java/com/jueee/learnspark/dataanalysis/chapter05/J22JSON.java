@@ -2,6 +2,7 @@ package com.jueee.learnspark.dataanalysis.chapter05;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import com.jueee.learnspark.dataanalysis.util.FilesUtilByJava;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -51,7 +52,7 @@ public class J22JSON {
         J22JSON test = new J22JSON();
 
         String inputFile = FilesUtilByJava.getDataPath() + File.separator + "chapter05" + File.separator + "FileFormats" + File.separator + "json.txt";
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
         JavaRDD<String> input = sc.textFile(inputFile);
         test.readTest1(input);

@@ -2,12 +2,13 @@ package com.jueee.learnspark.dataanalysis.chapter04
 
 import java.net.URL
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil
 import org.apache.spark.{HashPartitioner, Partitioner, SparkConf, SparkContext}
 
 object S5DataPartitioning {
 
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setMaster("local").setAppName("test")
+    val conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME)
     val sc = new SparkContext(conf)
     getDataPartitioning(sc)
     scalaPageRank(sc)

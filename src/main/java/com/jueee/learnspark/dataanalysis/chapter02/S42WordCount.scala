@@ -2,7 +2,7 @@ package com.jueee.learnspark.dataanalysis.chapter02
 
 import java.io.File
 
-import com.jueee.learnspark.dataanalysis.util.{FilesUtilByJava, StringsUtilByJava, StringsUtilByScala}
+import com.jueee.learnspark.dataanalysis.util.{DataBaseUtil, FilesUtilByJava, StringsUtilByJava, StringsUtilByScala}
 import org.apache.spark.{SparkConf, SparkContext}
 
 object S42WordCount {
@@ -14,7 +14,7 @@ object S42WordCount {
   }
 
   def wordcountByScala(inputFile:String,outputPath:String)={
-    val conf = new SparkConf().setMaster("local").setAppName("wordcount")
+    val conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME)
     val sc = new SparkContext(conf)
     val input = sc.textFile(inputFile)
     val words = input.flatMap(line => line.split("[^a-zA-Z0-9]"))

@@ -1,5 +1,6 @@
 package com.jueee.learnspark.dataanalysis.chapter04;
 
+import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 public class J33Joins {
     
     public static void main(String[] args){
-        SparkConf conf = new SparkConf().setMaster("local").setAppName("wordcount");
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
 
 
