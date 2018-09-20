@@ -47,11 +47,7 @@ public class J3BroadcastVariables {
         }
     }
 
-    public static void main(String[] args){
-
-        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
-        JavaSparkContext sc = new JavaSparkContext(conf);
-
+    public static JavaRDD<String> getValidCallSigns(JavaSparkContext sc){
         JavaRDD<String> rdd = sc.textFile("README.md");
         final Accumulator<Integer> blankLines = sc.accumulator(0);
         JavaRDD<String> callSigns = rdd.flatMap(
@@ -80,6 +76,16 @@ public class J3BroadcastVariables {
                     return b;
                 }
                 });
+        return validCallSigns;
+    }
+
+    public static void main(String[] args){
+
+        SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
+        JavaSparkContext sc = new JavaSparkContext(conf);
+
+        JavaRDD<String> validCallSigns = getValidCallSigns(sc);
+
         JavaPairRDD<String, Integer> contactCounts = validCallSigns.mapToPair(
                 new PairFunction<String, String, Integer>() {
                     public Tuple2<String, Integer> call(String callSign) {
