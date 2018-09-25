@@ -9,7 +9,7 @@ import scala.Tuple2;
 import java.util.Arrays;
 
 public class J33Joins {
-    
+
     public static void main(String[] args){
         SparkConf conf = new SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME);
         JavaSparkContext sc = new JavaSparkContext(conf);
