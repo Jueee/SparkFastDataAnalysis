@@ -2,7 +2,7 @@ from pyspark import SparkConf,SparkContext
 
 
 if __name__ == '__main__':
-    conf = SparkConf().setMaster(DataBaseUtil.SPARK_MASTER).setAppName(DataBaseUtil.SPARK_APPNAME)
+    conf = SparkConf().setMaster("master").setAppName("testapp")
     sc = SparkContext(conf = conf)
     
     storeAddress = sc.parallelize([
