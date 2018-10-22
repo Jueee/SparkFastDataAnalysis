@@ -44,6 +44,8 @@ public class J2SparkSqlApp {
         // 访问第一列
         JavaRDD<Object> map = input.toJavaRDD().map(row -> row.get(0));
         map.collect().forEach(System.out::println);
+
+        input.printSchema();
     }
 
     public static void main(String[] args){

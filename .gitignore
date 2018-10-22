@@ -2,6 +2,7 @@
 /project/*
 /.settings/*
 /venv/*
+/metastore_db/*
 /target/*
 .cache-main
 .cache-tests
