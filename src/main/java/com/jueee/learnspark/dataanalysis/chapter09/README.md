@@ -16,25 +16,23 @@ Spark SQL 提供了以下三大功能：
 为了实现这些功能，Spark SQL 提供了一种特殊的 RDD，叫作 SchemaRDD。   
 SchemaRDD 是存放 Row 对象的 RDD，每个 Row 对象代表一行记录。
 #### 本章目录 ####
-1.	[连接 Spark SQL]()    
-2.	[在应用中使用 Spark SQL]()    
-2.1	[初始化 Spark SQL]()    
-2.2	[基本查询示例]()    
-2.3	[SchemaRDD]()    
-2.4	[缓存]()    
-3.	[读取和存储数据]()    
-3.1	[Apache Hive]()    
-3.2	[Parquet]()    
-3.3	[JSON]()    
-3.4	[基于 RDD]()    
-4.	[JDBC/ODBC 服务器]()    
-4.1	[使用 Beeline]()    
-4.2	[长生命周期的表与查询]()    
-5.	[用户自定义函数]()    
-5.1	[Spark SQL UDF]()    
-5.2	[Hive UDF]()    
-6.	[Spark SQL 性能]()    
-7.	[总结]()    
+1.	[连接 Spark SQL](C1连接SparkSQL.md)    
+2.	[在应用中使用 Spark SQL](C2在应用中使用SparkSQL.md)    
+2.1	初始化 Spark SQL    
+2.2	基本查询示例    
+2.3	SchemaRDD    
+2.4	缓存   
+3.	[读取和存储数据](C3读取和存储数据.md)    
+3.1	Apache Hive    
+3.2	Parquet   
+3.3	JSON    
+3.4	基于 RDD    
+4.	[JDBC/ODBC 服务器](C4JDBC服务器.md)    
+4.1	使用 Beeline    
+4.2	长生命周期的表与查询    
+5.	[用户自定义函数](C5用户自定义函数.md)    
+5.1	Spark SQL UDF    
+5.2	Hive UDF    
+6.	[Spark SQL 性能](C6SparkSQL性能.md)    
 #### 本章总结 ####    
--   1
--   2
+-   Spark 利用 Spark SQL 进行结构化和半结构化数据处理的方式。
