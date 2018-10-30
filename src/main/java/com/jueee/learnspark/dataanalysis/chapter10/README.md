@@ -1,5 +1,18 @@
 ### 第 10 章	Spark Streaming ###
-介绍	Spark Streaming。
+Spark Streaming 允许用户使用一套和批处理非常接近的 API 来编写流式计算应用，这样就可以大量重用批处理应用的技术甚至代码。  
+
+和 Spark 基于 RDD 的概念很相似，Spark Streaming 使用离散化流（discretized stream）作为抽象表示，叫作 DStream。  
+DStream 是随时间推移而收到的数据的序列。  
+
+在内部，每个时间区间收到的数据都作为 RDD 存在，而 DStream 是由这些 RDD 所组成的序列（因此得名“离散化”）。  
+DStream 可以从各种输入源创建，比如 Flume、Kafka 或者 HDFS。  
+
+创建出来的 DStream 支持两种操作：
+-   转化操作（transformation），会生成一个新的 DStream
+-   输出操作（output operation），可以把数据写入外部系统中。  
+
+DStream 提供了许多与 RDD 所支持的操作相类似的操作支持，还增加了与时间相关的新操作，比如滑动窗口。
+
 #### 本章目录 ####
 1.	[一个简单的例子]()    
 2.	[架构与抽象]()    
