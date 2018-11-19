@@ -75,7 +75,7 @@ public class J32StatefulTransformations {
      * 窗口计数操作
      * @param accessLogsDStream
      */
-    public static void example2(JavaDStream<ApacheAccessLog> accessLogsDStream){
+    public static JavaPairDStream<String, Long> example2(JavaDStream<ApacheAccessLog> accessLogsDStream){
         JavaDStream<String> ip = accessLogsDStream.map(
                 new Function<ApacheAccessLog, String>() {
                     public String call(ApacheAccessLog entry) {
@@ -89,5 +89,6 @@ public class J32StatefulTransformations {
         JavaPairDStream<String, Long> ipAddressRequestCount = ip.countByValueAndWindow(
                 Durations.seconds(30), Durations.seconds(10));
         ipAddressRequestCount.print();
+        return ipAddressRequestCount;
     }
 }
