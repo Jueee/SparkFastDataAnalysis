@@ -4,12 +4,11 @@ import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.mllib.feature.HashingTF;
-import org.apache.spark.mllib.feature.IDF;
-import org.apache.spark.mllib.feature.IDFModel;
+import org.apache.spark.mllib.feature.*;
 import org.apache.spark.mllib.linalg.Vector;
-import scala.actors.threadpool.Arrays;
+import org.apache.spark.mllib.linalg.Vectors;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -38,5 +37,17 @@ public class J51FeatureExtraction {
         IDFModel idfModel = idf.fit(tfVectors);
         JavaRDD<Vector> tfIdfVectors = idfModel.transform(tfVectors);
         tfIdfVectors.collect().forEach(System.out::println);
+
+        // 在 Java 中缩放向量
+        System.out.println("--- 在 Java 中缩放向量 ---");
+        Vector denseVec1 = Vectors.dense(-2.0,5.0, 1.0);
+        Vector denseVec2 = Vectors.dense(2.0,0.0, 1.0);
+        List<Vector> vectors = Arrays.asList(denseVec1, denseVec2);
+        JavaRDD<Vector> dataset = sc.parallelize(vectors);
+        StandardScaler scaler = new StandardScaler(true, true);
+        StandardScalerModel model = scaler.fit(dataset.rdd());
+        JavaRDD<Vector> result = model.transform(dataset);
+        dataset.collect().forEach(System.out::println);
+        result.collect().forEach(System.out::println);
     }
 }

@@ -1,3 +1,5 @@
+# coding=UTF-8
+
 from pyspark.mllib.feature import HashingTF, IDF
 from pyspark import SparkContext
 
@@ -24,5 +26,17 @@ print(tfIdVectors)
 for v in tfIdVectors.collect():
     print(v)
 
+# 在 Python 中缩放向量
+print('--在 Python 中缩放向量--')
+from pyspark.mllib.linalg import Vectors
+from pyspark.mllib.feature import StandardScaler
 
-
+vectors = [Vectors.dense([-2.0,5.0,1.0]), Vectors.dense([2.0, 0.0, 1.0])]
+dataset = sc.parallelize(vectors)
+print(dataset)
+scaler = StandardScaler(withMean=True, withStd=True)
+model = scaler.fit(dataset)
+result = model.transform(dataset)
+print(result)
+for v in result.collect():
+    print(v)
