@@ -1,5 +1,5 @@
 from pyspark.mllib.regression import LabeledPoint
-from pyspark.mllib.regression import LogisticRegressionWithLBFGS
+from pyspark.mllib.classification import LogisticRegressionWithLBFGS
 from pyspark.mllib.linalg import Vectors
 from pyspark import SparkContext
 
