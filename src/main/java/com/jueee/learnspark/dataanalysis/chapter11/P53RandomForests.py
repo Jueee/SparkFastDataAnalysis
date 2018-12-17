@@ -25,7 +25,7 @@ print("随机森林模型：" + decisionTreeModel.toDebugString())
 # 未处理数据，带入模型处理
 denseVec = Vectors.dense(3.5, 2.0, 3.0)
 predict = decisionTreeModel.predict(denseVec)
-print("predict: %s\n", predict)
+print("predict: %s\n" % predict)
 
 """
 随机森林模型：TreeEnsembleModel classifier with 3 trees
@@ -40,6 +40,5 @@ print("predict: %s\n", predict)
   Tree 2:
     Predict: 0.0
 
-predict: %s
- 0.0
+predict: 0.0
 """
