@@ -3,23 +3,16 @@ package com.jueee.learnspark.dataanalysis.chapter11;
 import com.jueee.learnspark.dataanalysis.util.DataBaseUtil;
 import com.jueee.learnspark.dataanalysis.util.FilesUtilByJava;
 import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.Function;
 import org.apache.spark.ml.Pipeline;
 import org.apache.spark.ml.classification.LogisticRegression;
 import org.apache.spark.ml.feature.Tokenizer;
-import org.apache.spark.mllib.classification.LogisticRegressionModel;
-import org.apache.spark.mllib.classification.LogisticRegressionWithSGD;
 import org.apache.spark.mllib.feature.HashingTF;
-import org.apache.spark.mllib.linalg.Vector;
-import org.apache.spark.mllib.regression.LabeledPoint;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SQLContext;
 
 import java.io.File;
-import java.util.Arrays;
 
 public class J7PipelineAPI {
 
