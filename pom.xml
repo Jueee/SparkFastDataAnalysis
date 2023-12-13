@@ -115,7 +115,7 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch-hadoop</artifactId>
-            <version>6.2.1</version>
+            <version>7.17.11</version>
         </dependency>
         <dependency> <!-- Jetty demmo -->
             <groupId>org.eclipse.jetty</groupId>
